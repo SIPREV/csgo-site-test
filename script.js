@@ -1,3 +1,4 @@
+// Define case items with images
 const caseItems = [
   { name: "Common Skin", rarity: "common", image: "images/common.png" },
   { name: "Uncommon Skin", rarity: "uncommon", image: "images/uncommon.png" },
@@ -6,10 +7,12 @@ const caseItems = [
   { name: "Legendary Skin", rarity: "legendary", image: "images/legendary.png" }
 ];
 
+// Get DOM elements
 const spinner = document.getElementById("spinner");
 const openCaseButton = document.getElementById("open-case-button");
 const rewardDiv = document.getElementById("reward");
 
+// Populate spinner with items
 function populateSpinner() {
   spinner.innerHTML = ""; // Clear current items
   for (let i = 0; i < 30; i++) {
@@ -21,29 +24,28 @@ function populateSpinner() {
   }
 }
 
+// Open case with animation
 openCaseButton.addEventListener("click", () => {
   populateSpinner();
 
-  // Random stop position
-  const stopPosition = -(Math.random() * 2000 + 100); // Negative to scroll left
-
-  // Start the animation
-  spinner.style.transform = `translateX(${stopPosition}px)`;
-
-  // Wait for animation to end and display reward
+  // Start the animation by resetting and applying it
+  spinner.style.animation = "none"; // Reset animation
   setTimeout(() => {
-    spinner.style.transform = "none"; // Reset spinner for next use
+    spinner.style.animation = "spin-animation 4s cubic-bezier(0.17, 0.67, 0.83, 0.67)";
+  }, 10);
 
-    // Reward logic
+  // Show reward after animation ends
+  setTimeout(() => {
     const reward = caseItems[Math.floor(Math.random() * caseItems.length)];
     rewardDiv.innerHTML = `
       🎉 You got: ${reward.name} (${reward.rarity.toUpperCase()})!
       <img src="${reward.image}" alt="${reward.name}" style="width:100px; margin-top:10px;">
     `;
     rewardDiv.style.color = getRarityColor(reward.rarity);
-  }, 4000); // Match CSS transition duration
+  }, 4000); // Match animation duration
 });
 
+// Get rarity color
 function getRarityColor(rarity) {
   const colors = {
     common: "#b0c4de",
