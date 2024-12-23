@@ -34,9 +34,10 @@ button {
         transform: scale(1.1);
     }
 
+/* Spinner container */
 #spinner-container {
   margin: 20px auto;
-  width: 300px; /* Width of visible spinner area */
+  width: 400px; /* Width of visible spinner area */
   overflow: hidden; /* Ensures items scroll out of view */
   background-color: #272727;
   border: 2px solid #444;
@@ -45,10 +46,11 @@ button {
   position: relative;
 }
 
+/* Spinner (items container) */
 #spinner {
-  display: flex; /* Make items align horizontally */
+  display: flex; /* Horizontal layout */
   position: relative;
-  transition: transform 4s cubic-bezier(0.17, 0.67, 0.83, 0.67); /* Smooth scrolling effect */
+  animation: spin-animation 4s cubic-bezier(0.17, 0.67, 0.83, 0.67); /* Animation applied */
 }
 
 #spinner img {
@@ -59,15 +61,16 @@ button {
   border-radius: 5px; /* Rounded corners */
 }
 
-@keyframes spin {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-2000px);
-    }
+/* Keyframes for horizontal scrolling */
+@keyframes spin-animation {
+  0% {
+    transform: translateX(0); /* Start position */
+  }
+  100% {
+    transform: translateX(-1200px); /* Scroll left */
+  }
 }
+
 
 #reward {
     margin-top: 20px;
