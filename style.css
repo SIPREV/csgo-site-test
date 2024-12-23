@@ -35,29 +35,29 @@ button {
     }
 
 #spinner-container {
-    margin: 20px auto;
-    width: 80%;
-    overflow: hidden;
-    background-color: #272727;
-    border: 2px solid #444;
-    border-radius: 10px;
-    height: 120px;
-    position: relative;
+  margin: 20px auto;
+  width: 300px; /* Width of visible spinner area */
+  overflow: hidden; /* Ensures items scroll out of view */
+  background-color: #272727;
+  border: 2px solid #444;
+  border-radius: 10px;
+  height: 120px; /* Height of spinner area */
+  position: relative;
 }
 
 #spinner {
-    display: flex;
-    position: relative;
-    animation: none;
+  display: flex; /* Make items align horizontally */
+  position: relative;
+  transition: transform 4s cubic-bezier(0.17, 0.67, 0.83, 0.67); /* Smooth scrolling effect */
 }
 
-    #spinner img {
-        flex: none;
-        width: 100px;
-        height: 100%;
-        margin: 10px;
-        border-radius: 5px;
-    }
+#spinner img {
+  flex: none; /* Prevent images from shrinking */
+  width: 100px; /* Width of each item */
+  height: 100%; /* Match spinner height */
+  margin: 10px; /* Space between items */
+  border-radius: 5px; /* Rounded corners */
+}
 
 @keyframes spin {
     0% {
